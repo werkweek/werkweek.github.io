@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="background-color: #07090e; color: #f8fafc;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
@@ -18,22 +18,14 @@
   <meta property="og:description" content="Blog personal sobre IA agéntica, pipelines multimedia y arquitectura de software.">
   <meta property="og:image" content="https://werkweek.github.io/img/profile.jpg">
 
-  <!-- Google Fonts with display=swap -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-
+  <!-- Immediate Critical Base Styles to Prevent Blank/White Screen in WebViews -->
   <style>
     :root {
       --bg-dark: #07090e;
       --bg-surface: #0c1017;
-      --bg-card: rgba(14, 19, 30, 0.88);
-      --bg-card-hover: rgba(22, 29, 46, 0.95);
-      --border-subtle: rgba(255, 255, 255, 0.08);
+      --bg-card: rgba(14, 19, 30, 0.92);
+      --bg-card-hover: rgba(22, 29, 46, 0.98);
+      --border-subtle: rgba(255, 255, 255, 0.1);
       --border-gold: rgba(212, 175, 55, 0.35);
       --border-cobalt: rgba(56, 189, 248, 0.35);
 
@@ -74,18 +66,12 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg-dark);
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
+    html, body {
+      background-color: #07090e !important;
+      color: #f8fafc !important;
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65;
       overflow-x: hidden;
-      position: relative;
       min-height: 100vh;
       width: 100%;
     }
@@ -97,30 +83,14 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -1;
+      z-index: 0;
       pointer-events: none;
     }
 
-    /* Selection */
-    ::selection {
-      background: rgba(212, 175, 55, 0.3);
-      color: #fff;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-dark);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(212, 175, 55, 0.3);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--gold-primary);
+    .page-content-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
     }
 
     /* Container */
@@ -139,24 +109,18 @@
       letter-spacing: -0.02em;
     }
 
-    .font-serif {
-      font-family: 'Cinzel', Georgia, serif;
-    }
-
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
     .text-gold {
       background: var(--gradient-gold);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      color: #d4af37;
     }
 
     .text-cobalt {
       background: var(--gradient-cobalt);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      color: #38bdf8;
     }
 
     /* Header & Navbar */
@@ -166,7 +130,7 @@
       z-index: 100;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      background: rgba(7, 9, 14, 0.88);
+      background: rgba(7, 9, 14, 0.94);
       border-bottom: 1px solid var(--border-subtle);
       transition: var(--transition);
       width: 100%;
@@ -200,10 +164,6 @@
       background: #111;
     }
 
-    .nav-brand:hover .brand-avatar {
-      transform: scale(1.08) rotate(3deg);
-    }
-
     .brand-text {
       display: flex;
       flex-direction: column;
@@ -222,7 +182,7 @@
       color: var(--text-muted);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       white-space: nowrap;
     }
 
@@ -331,31 +291,23 @@
       transition: var(--transition);
     }
 
-    .mobile-menu-btn:hover {
-      background: rgba(212, 175, 55, 0.15);
-      border-color: var(--gold-primary);
-    }
-
-    /* Mobile Navigation Drawer */
     .mobile-drawer {
       position: fixed;
       top: 70px;
       left: 0;
       width: 100%;
-      background: rgba(7, 9, 14, 0.98);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: #07090e;
       border-bottom: 1px solid var(--border-gold);
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
       z-index: 99;
       transform: translateY(-120%);
       opacity: 0;
       pointer-events: none;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
     }
 
     .mobile-drawer.open {
@@ -367,22 +319,15 @@
     .mobile-drawer-link {
       color: var(--text-main);
       text-decoration: none;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 600;
       padding: 0.75rem 1rem;
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       gap: 12px;
-      transition: var(--transition);
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid transparent;
-    }
-
-    .mobile-drawer-link i {
-      color: var(--gold-light);
-      width: 20px;
-      text-align: center;
     }
 
     .mobile-drawer-link:hover, .mobile-drawer-link:active {
@@ -393,7 +338,7 @@
 
     /* Hero Section */
     .hero-section {
-      padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem);
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(2rem, 4vw, 3.5rem);
       position: relative;
     }
 
@@ -414,7 +359,7 @@
       border: 1px solid rgba(212, 175, 55, 0.3);
       color: var(--gold-light);
       font-size: clamp(0.72rem, 2vw, 0.8rem);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       margin-bottom: 1.25rem;
     }
 
@@ -424,13 +369,6 @@
       border-radius: 50%;
       background: var(--emerald-light);
       box-shadow: 0 0 10px var(--emerald-light);
-      animation: pulseAnimation 2s infinite;
-    }
-
-    @keyframes pulseAnimation {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.8; }
     }
 
     .hero-title {
@@ -467,7 +405,7 @@
       font-size: clamp(1.25rem, 3.5vw, 1.6rem);
       font-weight: 800;
       color: var(--gold-light);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
     }
 
     .stat-item p {
@@ -483,7 +421,6 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: clamp(1.5rem, 4vw, 2rem);
-      backdrop-filter: blur(20px);
       box-shadow: var(--shadow-luxury);
       position: relative;
       overflow: hidden;
@@ -492,18 +429,6 @@
 
     .hero-card:hover {
       border-color: var(--border-gold);
-      box-shadow: var(--shadow-luxury), var(--shadow-gold);
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
-      pointer-events: none;
     }
 
     .hero-card-header {
@@ -553,24 +478,13 @@
       transition: var(--transition);
     }
 
-    .topic-row:hover {
-      background: rgba(212, 175, 55, 0.08);
-      border-color: rgba(212, 175, 55, 0.3);
-      transform: translateX(4px);
-    }
-
-    .topic-row i {
-      color: var(--gold-light);
-      margin-right: 6px;
-    }
-
     .topic-tag {
       font-size: 0.72rem;
       padding: 0.18rem 0.55rem;
       border-radius: 100px;
       background: rgba(56, 189, 248, 0.12);
       color: var(--cobalt-light);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       flex-shrink: 0;
     }
 
@@ -591,7 +505,6 @@
     .direct-portal-link:hover {
       border-color: var(--gold-primary);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-gold);
     }
 
     .portal-info h5 {
@@ -603,12 +516,6 @@
     .portal-info p {
       font-size: 0.76rem;
       color: var(--text-muted);
-    }
-
-    .portal-icon {
-      font-size: 1.1rem;
-      color: var(--gold-primary);
-      flex-shrink: 0;
     }
 
     /* Section Headers */
@@ -624,7 +531,7 @@
       text-transform: uppercase;
       letter-spacing: 0.15em;
       color: var(--gold-primary);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       margin-bottom: 0.4rem;
     }
 
@@ -651,7 +558,6 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      backdrop-filter: blur(16px);
     }
 
     .search-box {
@@ -678,13 +584,10 @@
       color: var(--text-main);
       font-size: 0.88rem;
       outline: none;
-      transition: var(--transition);
     }
 
     .search-input:focus {
       border-color: var(--gold-primary);
-      background: rgba(255, 255, 255, 0.07);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
     }
 
     .category-pills {
@@ -708,18 +611,11 @@
       white-space: nowrap;
     }
 
-    .pill-btn:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.08);
-    }
-
     .pill-btn.active {
       background: var(--gradient-gold);
       color: #07090e;
       border-color: transparent;
       font-weight: 700;
-      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
     }
 
     /* Featured Article */
@@ -731,19 +627,18 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       margin-bottom: 2.5rem;
-      box-shadow: var(--shadow-luxury), var(--shadow-gold);
+      box-shadow: var(--shadow-luxury);
       transition: var(--transition);
       cursor: pointer;
     }
 
     .featured-article:hover {
       transform: translateY(-4px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.3);
     }
 
     .featured-img-wrap {
       position: relative;
-      min-height: 260px;
+      min-height: 240px;
       background: #111;
     }
 
@@ -751,11 +646,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .featured-article:hover .featured-img {
-      transform: scale(1.04);
     }
 
     .featured-badge {
@@ -768,7 +658,6 @@
       font-size: 0.74rem;
       padding: 0.3rem 0.8rem;
       border-radius: 100px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-family: 'Outfit', sans-serif;
@@ -788,23 +677,14 @@
       gap: 0.85rem;
       font-size: 0.78rem;
       color: var(--text-dim);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       margin-bottom: 0.85rem;
-    }
-
-    .article-meta i {
-      color: var(--gold-light);
     }
 
     .featured-title {
       font-size: clamp(1.35rem, 3.5vw, 1.85rem);
       margin-bottom: 0.85rem;
       line-height: 1.25;
-      transition: color 0.2s ease;
-    }
-
-    .featured-article:hover .featured-title {
-      color: var(--gold-light);
     }
 
     .featured-excerpt {
@@ -835,7 +715,6 @@
     .article-card:hover {
       transform: translateY(-5px);
       border-color: var(--border-gold);
-      box-shadow: var(--shadow-luxury);
     }
 
     .card-img-wrap {
@@ -849,20 +728,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .article-card:hover .card-img {
-      transform: scale(1.06);
     }
 
     .card-category-tag {
       position: absolute;
       bottom: 0.75rem;
       left: 0.75rem;
-      background: rgba(7, 9, 14, 0.85);
+      background: rgba(7, 9, 14, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
       font-size: 0.72rem;
       padding: 0.25rem 0.65rem;
       border-radius: 100px;
@@ -882,11 +755,6 @@
       font-size: 1.15rem;
       margin-bottom: 0.6rem;
       line-height: 1.3;
-      transition: color 0.2s ease;
-    }
-
-    .article-card:hover .card-title {
-      color: var(--gold-light);
     }
 
     .card-excerpt {
@@ -918,7 +786,7 @@
 
     /* Bento Ecosystem Section */
     .ecosystem-section {
-      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem;
+      padding: clamp(2.5rem, 5vw, 4.5rem) 1.5rem;
       position: relative;
     }
 
@@ -933,7 +801,6 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: clamp(1.35rem, 3.5vw, 2rem);
-      backdrop-filter: blur(16px);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
@@ -963,12 +830,10 @@
 
     .bento-gold:hover {
       border-color: var(--gold-primary);
-      box-shadow: var(--shadow-luxury), var(--shadow-gold);
     }
 
     .bento-cobalt:hover {
       border-color: var(--cobalt-light);
-      box-shadow: var(--shadow-luxury), var(--shadow-cobalt);
     }
 
     .bento-header {
@@ -1006,17 +871,6 @@
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
-    .bento-link-arrow {
-      color: var(--text-dim);
-      font-size: 1.05rem;
-      transition: var(--transition);
-    }
-
-    .bento-card:hover .bento-link-arrow {
-      color: var(--text-main);
-      transform: translate(3px, -3px);
-    }
-
     .bento-title {
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
@@ -1046,7 +900,7 @@
 
     /* About & Setup Section */
     .about-section {
-      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem;
+      padding: clamp(2.5rem, 5vw, 4.5rem) 1.5rem;
       border-top: 1px solid var(--border-subtle);
     }
 
@@ -1091,29 +945,22 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       font-size: 0.78rem;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       color: var(--text-main);
-      transition: var(--transition);
-    }
-
-    .tech-pill:hover {
-      background: rgba(212, 175, 55, 0.12);
-      border-color: var(--gold-primary);
-      color: var(--gold-light);
     }
 
     /* Connect & Contact Banner */
     .connect-section {
-      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem;
+      padding: clamp(2.5rem, 5vw, 4.5rem) 1.5rem;
     }
 
     .connect-card {
-      background: linear-gradient(135deg, rgba(14, 19, 30, 0.95) 0%, rgba(20, 26, 40, 0.9) 100%);
+      background: linear-gradient(135deg, rgba(14, 19, 30, 0.98) 0%, rgba(20, 26, 40, 0.95) 100%);
       border: 1px solid var(--border-gold);
       border-radius: var(--radius-lg);
       padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2.5rem);
       text-align: center;
-      box-shadow: var(--shadow-luxury), var(--shadow-gold);
+      box-shadow: var(--shadow-luxury);
       position: relative;
       overflow: hidden;
     }
@@ -1160,7 +1007,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       font-size: 0.76rem;
     }
 
@@ -1186,9 +1033,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(5, 7, 10, 0.9);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(5, 7, 10, 0.92);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -1212,15 +1057,9 @@
       max-height: 92vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), var(--shadow-gold);
-      animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
       position: relative;
       overflow: hidden;
-    }
-
-    @keyframes modalSlideUp {
-      from { transform: translateY(30px) scale(0.97); opacity: 0; }
-      to { transform: translateY(0) scale(1); opacity: 1; }
     }
 
     .modal-header {
@@ -1229,7 +1068,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(13, 18, 28, 0.95);
+      background: #0d121c;
       position: sticky;
       top: 0;
       z-index: 10;
@@ -1246,14 +1085,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: var(--transition);
       flex-shrink: 0;
-    }
-
-    .modal-close-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      transform: rotate(90deg);
     }
 
     .modal-body {
@@ -1312,13 +1144,13 @@
       padding: 1rem;
       overflow-x: auto;
       margin: 1.25rem 0;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       font-size: 0.82rem;
       color: #38bdf8;
     }
 
     .modal-body code {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       background: rgba(255, 255, 255, 0.08);
       padding: 0.2rem 0.4rem;
       border-radius: 4px;
@@ -1346,7 +1178,7 @@
       color: var(--gold-light);
       padding: 0.85rem 1.25rem;
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-luxury), var(--shadow-gold);
+      box-shadow: var(--shadow-luxury);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -1436,466 +1268,474 @@
       }
     }
   </style>
-</head>
-<body>
 
-  <!-- Interactive 60fps Canvas (Obsidian & Gold Neural Mesh) -->
+  <!-- Google Fonts & FontAwesome Async -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body style="background-color: #07090e; color: #f8fafc;">
+
+  <!-- Interactive Background Canvas -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Navbar -->
-  <header class="navbar-wrapper">
-    <div class="container">
-      <nav class="navbar">
-        <a href="#inicio" class="nav-brand" title="Gibran Villa | Bitácora">
-          <img src="img/profile.jpg" alt="Gibran Villa" class="brand-avatar" width="40" height="40">
-          <div class="brand-text">
-            <span class="brand-name">Gibran Villa</span>
-            <span class="brand-sub">Bitácora & Tech Hub</span>
+  <div class="page-content-wrapper">
+    <!-- Navbar -->
+    <header class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar">
+          <a href="#inicio" class="nav-brand" title="Gibran Villa | Bitácora">
+            <img src="img/profile.jpg" alt="Gibran Villa" class="brand-avatar" width="40" height="40">
+            <div class="brand-text">
+              <span class="brand-name">Gibran Villa</span>
+              <span class="brand-sub">Bitácora & Tech Hub</span>
+            </div>
+          </a>
+
+          <ul class="nav-menu">
+            <li><a href="#inicio" class="nav-link active"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#articulos" class="nav-link"><i class="fa-solid fa-newspaper"></i> Artículos</a></li>
+            <li><a href="#ecosistema" class="nav-link"><i class="fa-solid fa-cubes"></i> Ecosistema</a></li>
+            <li><a href="#sobre-mi" class="nav-link"><i class="fa-solid fa-user-astronaut"></i> Sobre Mí</a></li>
+            <li><a href="#contacto" class="nav-link"><i class="fa-solid fa-envelope"></i> Contacto</a></li>
+          </ul>
+
+          <div class="nav-actions">
+            <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="btn btn-gold" title="Ver CV Interactivo">
+              <i class="fa-solid fa-id-badge"></i> <span>Ver CV</span>
+            </a>
+            <a href="https://github.com/werkweek" target="_blank" class="btn btn-icon" title="GitHub werkweek">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-icon" title="LinkedIn Gibran Villa">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" onclick="toggleMobileDrawer()">
+              <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#inicio" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="#articulos" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-newspaper"></i> Artículos & Bitácoras</a>
+      <a href="#ecosistema" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-cubes"></i> Ecosistema & Proyectos</a>
+      <a href="#sobre-mi" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-user-astronaut"></i> Sobre Mí & Stack</a>
+      <a href="#contacto" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-envelope"></i> Contacto Directo</a>
+      <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="mobile-drawer-link" style="color: var(--gold-light); border-color: rgba(212,175,55,0.3);"><i class="fa-solid fa-id-badge"></i> Portal de Curículum & PDF ATS</a>
+      <div style="display: flex; gap: 10px; margin-top: 5px;">
+        <a href="https://github.com/werkweek" target="_blank" class="btn btn-outline" style="flex: 1; font-size: 0.8rem;"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-outline" style="flex: 1; font-size: 0.8rem;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="pulse-dot"></span>
+              <span>Vibe Coding & Agentic AI // 2026</span>
+            </div>
+            <h1 class="hero-title">
+              Bitácora Digital, <span class="text-gold">Inteligencia Artificial</span> & Multimedia.
+            </h1>
+            <p class="hero-lead">
+              Explorando la convergencia entre agentes de IA autónomos, pipelines de postproducción audiovisual, herramientas auto-hospedadas y arquitectura de software desde Chihuahua, México.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#articulos" class="btn btn-gold">
+                <i class="fa-solid fa-book-open"></i> <span>Explorar Artículos</span>
+              </a>
+              <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="btn btn-outline">
+                <i class="fa-solid fa-file-invoice"></i> <span>Portal de Curículum & PDF ATS</span>
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <h4>10+ Años</h4>
+                <p>Ingeniería & Software</p>
+              </div>
+              <div class="stat-item">
+                <h4>MCP Native</h4>
+                <p>Agentes Autónomos</p>
+              </div>
+              <div class="stat-item">
+                <h4>Multicam 4K</h4>
+                <p>Video & Audio Pipelines</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <img src="img/profile.jpg" alt="Gibran Villa Franco" class="profile-img-lg" width="68" height="68">
+              <div class="card-meta">
+                <h3>Gibran Villa</h3>
+                <p>Ingeniero en Sistemas (UACH) & Creative Technologist</p>
+              </div>
+            </div>
+
+            <div class="card-topics">
+              <div class="topic-row">
+                <span><i class="fa-solid fa-robot" style="color:var(--gold-light); margin-right:6px;"></i> Model Context Protocol (MCP)</span>
+                <span class="topic-tag">AI Tools</span>
+              </div>
+              <div class="topic-row">
+                <span><i class="fa-solid fa-video" style="color:var(--gold-light); margin-right:6px;"></i> DaVinci Resolve & Multicam Automation</span>
+                <span class="topic-tag">Media</span>
+              </div>
+              <div class="topic-row">
+                <span><i class="fa-solid fa-microchip" style="color:var(--gold-light); margin-right:6px;"></i> Impresión 3D, Corte Láser & Drones</span>
+                <span class="topic-tag">Hardware</span>
+              </div>
+            </div>
+
+            <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="direct-portal-link">
+              <div class="portal-info">
+                <h5>Curículum Vitae Interactivo</h5>
+                <p>Roles dinámicos, métricas y descarga de PDF trilingüe</p>
+              </div>
+              <div class="portal-icon">
+                <i class="fa-solid fa-arrow-up-right-from-square" style="color:var(--gold-primary);"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog & Articles Section -->
+    <section id="articulos" class="container" style="padding: clamp(2.5rem, 5vw, 4rem) 1.5rem;">
+      <div class="section-header">
+        <span class="section-tag">Publicaciones & Bitácoras</span>
+        <h2 class="section-title">Pensamientos, Tutoriales & <span class="text-gold">Sistemas</span></h2>
+        <p class="section-desc">Artículos técnicos y reflexiones directas sobre flujos de trabajo reales con IA, ingeniería audiovisual y creación digital.</p>
+      </div>
+
+      <!-- Filter & Search -->
+      <div class="filter-bar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Buscar por título, tecnología o etiqueta...">
+        </div>
+        <div class="category-pills">
+          <button class="pill-btn active" data-filter="all">Todos</button>
+          <button class="pill-btn" data-filter="ia">🤖 IA & MCP</button>
+          <button class="pill-btn" data-filter="video">🎬 Video & Audio</button>
+          <button class="pill-btn" data-filter="vibe">⚡ Vibe Coding</button>
+          <button class="pill-btn" data-filter="hardware">🛠️ Hardware & Lab</button>
+          <button class="pill-btn" data-filter="filosofia">🌱 Reflexiones</button>
+        </div>
+      </div>
+
+      <!-- Featured Post -->
+      <div class="featured-article" id="featuredArticle" data-category="ia" onclick="openArticleModal('art-1')">
+        <div class="featured-img-wrap">
+          <img src="img/ai_lab.jpg" alt="Agentes Autónomos MCP" class="featured-img" loading="lazy" decoding="async">
+          <span class="featured-badge">★ Destacado</span>
+        </div>
+        <div class="featured-body">
+          <div class="article-meta">
+            <span><i class="fa-solid fa-calendar-day" style="color:var(--gold-light);"></i> 18 de Agosto, 2026</span>
+            <span><i class="fa-solid fa-clock" style="color:var(--gold-light);"></i> 12 min de lectura</span>
+            <span><i class="fa-solid fa-tag" style="color:var(--gold-light);"></i> IA & MCP</span>
+          </div>
+          <h3 class="featured-title">Construyendo Agentes Autónomos con MCP: Del Concepto al Flujo de Trabajo Real</h3>
+          <p class="featured-excerpt">
+            Cómo implementamos servidores Model Context Protocol locales en Python y Node.js para conectar modelos de lenguaje directamente con DaVinci Resolve, auditorías web automatizadas y telemetría de sistemas.
+          </p>
+          <div>
+            <span class="btn btn-gold" style="padding: 0.45rem 1.1rem; font-size: 0.82rem;">
+              Leer artículo completo <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Cards Grid -->
+      <div class="articles-grid" id="articlesGrid">
+
+        <!-- Card 2 -->
+        <article class="article-card" data-category="video" onclick="openArticleModal('art-2')">
+          <div class="card-img-wrap">
+            <img src="img/podcast.jpg" alt="Pipeline Multicámara Podcast" class="card-img" loading="lazy" decoding="async">
+            <span class="card-category-tag">🎬 Video & Audio</span>
+          </div>
+          <div class="card-content">
+            <div class="article-meta">
+              <span><i class="fa-regular fa-clock" style="color:var(--gold-light);"></i> 8 min</span>
+              <span><i class="fa-regular fa-calendar" style="color:var(--gold-light);"></i> 16 Ago 2026</span>
+            </div>
+            <h3 class="card-title">El Pipeline Automatizado de Video: Flujos Multicámara y Proxies en 1080p</h3>
+            <p class="card-excerpt">
+              La arquitectura detrás de Hijos del Trago Podcast: organización automática de clips por cámara, generación sincronizada de líneas de tiempo y colas de renderizado nocturno.
+            </p>
+            <div class="card-footer">
+              <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
+              <span><i class="fa-solid fa-code"></i> Python + DVR</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="article-card" data-category="vibe" onclick="openArticleModal('art-3')">
+          <div class="card-img-wrap">
+            <img src="img/coding.jpg" alt="Vibe Coding 2026" class="card-img" loading="lazy" decoding="async">
+            <span class="card-category-tag">⚡ Vibe Coding</span>
+          </div>
+          <div class="card-content">
+            <div class="article-meta">
+              <span><i class="fa-regular fa-clock" style="color:var(--gold-light);"></i> 10 min</span>
+              <span><i class="fa-regular fa-calendar" style="color:var(--gold-light);"></i> 12 Ago 2026</span>
+            </div>
+            <h3 class="card-title">Vibe Coding en 2026: De Escribir Sintaxis a Orquestar Sistemas Inteligentes</h3>
+            <p class="card-excerpt">
+              Cómo cambió mi día a día como Ingeniero en Sistemas: metodologías para programar en simbiosis con LLMs, pruebas deterministas y diseño visual de alto impacto sin fricción.
+            </p>
+            <div class="card-footer">
+              <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
+              <span><i class="fa-solid fa-brain"></i> Arquitectura</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="article-card" data-category="hardware" onclick="openArticleModal('art-4')">
+          <div class="card-img-wrap">
+            <img src="img/3d_print.jpg" alt="Impresión 3D y Corte Láser" class="card-img" loading="lazy" decoding="async">
+            <span class="card-category-tag">🛠️ Hardware & Lab</span>
+          </div>
+          <div class="card-content">
+            <div class="article-meta">
+              <span><i class="fa-regular fa-clock" style="color:var(--gold-light);"></i> 7 min</span>
+              <span><i class="fa-regular fa-calendar" style="color:var(--gold-light);"></i> 05 Ago 2026</span>
+            </div>
+            <h3 class="card-title">Ingeniería Creativa: Impresión 3D, Corte Láser y Drones como Extensión del Código</h3>
+            <p class="card-excerpt">
+              El software cobra vida cuando toca el mundo físico. Prototipado rápido de gabinetes, accesorios para rigs de cámara y piezas personalizadas en mi taller personal.
+            </p>
+            <div class="card-footer">
+              <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
+              <span><i class="fa-solid fa-gear"></i> Hardware Lab</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="article-card" data-category="filosofia" onclick="openArticleModal('art-5')">
+          <div class="card-img-wrap">
+            <img src="img/strategy.jpg" alt="Autonomía Digital" class="card-img" loading="lazy" decoding="async">
+            <span class="card-category-tag">🌱 Reflexiones</span>
+          </div>
+          <div class="card-content">
+            <div class="article-meta">
+              <span><i class="fa-regular fa-clock" style="color:var(--gold-light);"></i> 6 min</span>
+              <span><i class="fa-regular fa-calendar" style="color:var(--gold-light);"></i> 28 Jul 2026</span>
+            </div>
+            <h3 class="card-title">Por qué la Soberanía Digital y un Espacio Web Propio Siguen Siendo Esenciales</h3>
+            <p class="card-excerpt">
+              En un internet dominado por algoritmos cerrados y plataformas prestadas, tener tu propio portal estático en GitHub Pages y herramientas auto-alojadas es un acto de independencia técnica.
+            </p>
+            <div class="card-footer">
+              <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
+              <span><i class="fa-solid fa-feather"></i> Ensayo</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Bento Ecosystem Section -->
+    <section id="ecosistema" class="ecosystem-section container">
+      <div class="section-header">
+        <span class="section-tag">Ecosistema Vivo</span>
+        <h2 class="section-title">Proyectos, Portales & <span class="text-gold">Creaciones</span></h2>
+        <p class="section-desc">Acceso directo a las diferentes plataformas y aplicaciones que construyo y mantengo activas.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Bento 1: CV Interactivo -->
+        <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="bento-card bento-col-8 bento-gold">
+          <div>
+            <div class="bento-header">
+              <div class="bento-icon icon-gold">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <span style="color:var(--text-dim);"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </div>
+            <h3 class="bento-title">Curículum Vitae Interactivo & PDF Harvard ATS</h3>
+            <p class="bento-desc">
+              Portal web con estética Obsidian Gold, selector dinámico de roles (AI Architect, Multimedia Lead, Creative Technologist) y compilador automático de CV en PDF multilingüe (Español, Inglés y Chino Mandarín) optimizado para sistemas ATS.
+            </p>
+          </div>
+          <div class="bento-tags">
+            <span class="bento-tag">HTML5 / Vanilla CSS</span>
+            <span class="bento-tag">Chrome Headless PDF</span>
+            <span class="bento-tag">Trilingüe (ES/EN/ZH)</span>
+            <span class="bento-tag">60fps Canvas</span>
           </div>
         </a>
 
-        <ul class="nav-menu">
-          <li><a href="#inicio" class="nav-link active"><i class="fa-solid fa-house"></i> Inicio</a></li>
-          <li><a href="#articulos" class="nav-link"><i class="fa-solid fa-newspaper"></i> Artículos</a></li>
-          <li><a href="#ecosistema" class="nav-link"><i class="fa-solid fa-cubes"></i> Ecosistema</a></li>
-          <li><a href="#sobre-mi" class="nav-link"><i class="fa-solid fa-user-astronaut"></i> Sobre Mí</a></li>
-          <li><a href="#contacto" class="nav-link"><i class="fa-solid fa-envelope"></i> Contacto</a></li>
-        </ul>
+        <!-- Bento 2: Hijos del Trago Podcast -->
+        <div class="bento-card bento-col-4 bento-cobalt">
+          <div>
+            <div class="bento-header">
+              <div class="bento-icon icon-cobalt">
+                <i class="fa-solid fa-microphone-lines"></i>
+              </div>
+              <span style="color:var(--text-dim);"><i class="fa-solid fa-podcast"></i></span>
+            </div>
+            <h3 class="bento-title">Hijos del Trago Podcast</h3>
+            <p class="bento-desc">
+              Producción audiovisual completa: setup multicámara, masterización con iZotope/FabFilter y automatización de clips para YouTube.
+            </p>
+          </div>
+          <div class="bento-tags">
+            <span class="bento-tag">DaVinci Resolve API</span>
+            <span class="bento-tag">Audio DSP</span>
+          </div>
+        </div>
 
-        <div class="nav-actions">
-          <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="btn btn-gold" title="Ver CV Interactivo">
-            <i class="fa-solid fa-id-badge"></i> <span>Ver CV</span>
+        <!-- Bento 3: Antigravity Suite -->
+        <div class="bento-card bento-col-6 bento-cobalt">
+          <div>
+            <div class="bento-header">
+              <div class="bento-icon icon-emerald">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <span style="color:var(--text-dim);"><i class="fa-solid fa-code-branch"></i></span>
+            </div>
+            <h3 class="bento-title">Antigravity Suite v3.0 & MCP Ecosystem</h3>
+            <p class="bento-desc">
+              Entorno unificado de desarrollo con agentes de IA autónomos, sincronización multi-nube (Google Drive, OneDrive, Box) y widgets de telemetría de sistema en tiempo real.
+            </p>
+          </div>
+          <div class="bento-tags">
+            <span class="bento-tag">Model Context Protocol</span>
+            <span class="bento-tag">Python CLI</span>
+            <span class="bento-tag">Multi-Cloud Sync</span>
+          </div>
+        </div>
+
+        <!-- Bento 4: Invitación Digital -->
+        <a href="https://werkweek.github.io/invitacion-boda/" target="_blank" class="bento-card bento-col-6 bento-gold">
+          <div>
+            <div class="bento-header">
+              <div class="bento-icon icon-gold">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+              <span style="color:var(--text-dim);"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </div>
+            <h3 class="bento-title">Invitación de Boda Digital e Interactiva</h3>
+            <p class="bento-desc">
+              Experiencia web interactiva con estética refinada, cuenta regresiva en tiempo real, integración de ubicación GPS, confirmación RSVP y galería fotográfica.
+            </p>
+          </div>
+          <div class="bento-tags">
+            <span class="bento-tag">Interactive UI</span>
+            <span class="bento-tag">Countdown Timer</span>
+            <span class="bento-tag">GitHub Pages</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Me & Setup Section -->
+    <section id="sobre-mi" class="about-section container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-tag">Detrás de la Pantalla</span>
+          <h2 class="section-title" style="margin-bottom: 1.25rem;">Ingeniería, Creatividad & <span class="text-gold">Autonomía</span></h2>
+          <p>
+            Soy <strong>Gibran Samuel Villa Franco</strong>, Ingeniero en Sistemas por la Universidad Autónoma de Chihuahua (UACH). A lo largo de más de una década me he especializado en crear soluciones que unen el código robusto con el diseño visual y la producción multimedia.
+          </p>
+          <p>
+            Creo firmemente en la <em>autonomía tecnológica</em>: construir herramientas propias, dominar la infraestructura local mediante MCP y servidores locales, y aprovechar la Inteligencia Artificial como un amplificador del pensamiento técnico y creativo.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.85rem; flex-wrap: wrap;">
+            <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-outline">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/werkweek" target="_blank" class="btn btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub (@werkweek)
+            </a>
+            <button class="btn btn-gold" onclick="copyEmail()">
+              <i class="fa-solid fa-copy"></i> Copiar Email
+            </button>
+          </div>
+        </div>
+
+        <div class="tech-stack-wrap">
+          <h4><i class="fa-solid fa-layer-group" style="color:var(--gold-light); margin-right:6px;"></i> Stack Técnico & Herramientas Diarias</h4>
+          <div class="tech-pills-cloud">
+            <span class="tech-pill"><i class="fa-brands fa-python"></i> Python 3.12+</span>
+            <span class="tech-pill"><i class="fa-brands fa-js"></i> JavaScript / Node.js</span>
+            <span class="tech-pill"><i class="fa-solid fa-robot"></i> Anthropic / OpenAI / Gemini APIs</span>
+            <span class="tech-pill"><i class="fa-solid fa-network-wired"></i> Model Context Protocol (MCP)</span>
+            <span class="tech-pill"><i class="fa-solid fa-film"></i> DaVinci Resolve Studio API</span>
+            <span class="tech-pill"><i class="fa-solid fa-sliders"></i> iZotope RX / FabFilter DSP</span>
+            <span class="tech-pill"><i class="fa-solid fa-cube"></i> Bambu Lab 3D Printing</span>
+            <span class="tech-pill"><i class="fa-solid fa-bolt"></i> CO2 & Diode Laser Systems</span>
+            <span class="tech-pill"><i class="fa-brands fa-git-alt"></i> Git & GitHub Actions</span>
+            <span class="tech-pill"><i class="fa-brands fa-linux"></i> Linux & PowerShell Core</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section id="contacto" class="connect-section container">
+      <div class="connect-card">
+        <h2 class="connect-title">¿Conversamos sobre <span class="text-gold">IA, Audio/Video</span> o Nuevos Proyectos?</h2>
+        <p class="connect-desc">
+          Siempre estoy abierto a colaborar en iniciativas innovadoras, desarrollo de agentes inteligentes o arquitecturas multimedia avanzadas.
+        </p>
+        <div class="connect-actions">
+          <a href="mailto:samf3212@gmail.com" class="btn btn-gold">
+            <i class="fa-solid fa-paper-plane"></i> Enviar Correo Directo
           </a>
-          <a href="https://github.com/werkweek" target="_blank" class="btn btn-icon" title="GitHub werkweek">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-icon" title="LinkedIn Gibran Villa">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú" onclick="toggleMobileDrawer()">
-            <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
+          <button class="btn btn-outline" onclick="copyEmail()">
+            <i class="fa-solid fa-envelope"></i> samf3212@gmail.com
           </button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#inicio" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-house"></i> Inicio</a>
-    <a href="#articulos" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-newspaper"></i> Artículos & Bitácoras</a>
-    <a href="#ecosistema" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-cubes"></i> Ecosistema & Proyectos</a>
-    <a href="#sobre-mi" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-user-astronaut"></i> Sobre Mí & Stack</a>
-    <a href="#contacto" class="mobile-drawer-link" onclick="closeMobileDrawer()"><i class="fa-solid fa-envelope"></i> Contacto Directo</a>
-    <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="mobile-drawer-link" style="color: var(--gold-light); border-color: rgba(212,175,55,0.3);"><i class="fa-solid fa-id-badge"></i> Portal de Curículum & PDF ATS</a>
-    <div style="display: flex; gap: 10px; margin-top: 5px;">
-      <a href="https://github.com/werkweek" target="_blank" class="btn btn-outline" style="flex: 1; font-size: 0.8rem;"><i class="fa-brands fa-github"></i> GitHub</a>
-      <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-outline" style="flex: 1; font-size: 0.8rem;"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section id="inicio" class="hero-section">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="pulse-dot"></span>
-            <span>Vibe Coding & Agentic AI // 2026</span>
-          </div>
-          <h1 class="hero-title">
-            Bitácora Digital, <span class="text-gold">Inteligencia Artificial</span> & Multimedia.
-          </h1>
-          <p class="hero-lead">
-            Explorando la convergencia entre agentes de IA autónomos, pipelines de postproducción audiovisual, herramientas auto-hospedadas y arquitectura de software desde Chihuahua, México.
-          </p>
-          <div class="hero-cta-group">
-            <a href="#articulos" class="btn btn-gold">
-              <i class="fa-solid fa-book-open"></i> <span>Explorar Artículos</span>
-            </a>
-            <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="btn btn-outline">
-              <i class="fa-solid fa-file-invoice"></i> <span>Portal de Curículum & PDF ATS</span>
-            </a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat-item">
-              <h4>10+ Años</h4>
-              <p>Ingeniería & Software</p>
-            </div>
-            <div class="stat-item">
-              <h4>MCP Native</h4>
-              <p>Agentes Autónomos</p>
-            </div>
-            <div class="stat-item">
-              <h4>Multicam 4K</h4>
-              <p>Video & Audio Pipelines</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-card-header">
-            <img src="img/profile.jpg" alt="Gibran Villa Franco" class="profile-img-lg" width="68" height="68">
-            <div class="card-meta">
-              <h3>Gibran Villa</h3>
-              <p>Ingeniero en Sistemas (UACH) & Creative Technologist</p>
-            </div>
-          </div>
-
-          <div class="card-topics">
-            <div class="topic-row">
-              <span><i class="fa-solid fa-robot"></i> Model Context Protocol (MCP)</span>
-              <span class="topic-tag">AI Tools</span>
-            </div>
-            <div class="topic-row">
-              <span><i class="fa-solid fa-video"></i> DaVinci Resolve & Multicam Automation</span>
-              <span class="topic-tag">Media</span>
-            </div>
-            <div class="topic-row">
-              <span><i class="fa-solid fa-microchip"></i> Impresión 3D, Corte Láser & Drones</span>
-              <span class="topic-tag">Hardware</span>
-            </div>
-          </div>
-
-          <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="direct-portal-link">
-            <div class="portal-info">
-              <h5>Curículum Vitae Interactivo</h5>
-              <p>Roles dinámicos, métricas y descarga de PDF trilingüe</p>
-            </div>
-            <div class="portal-icon">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog & Articles Section -->
-  <section id="articulos" class="container" style="padding: clamp(2.5rem, 5vw, 4rem) 1.5rem;">
-    <div class="section-header">
-      <span class="section-tag">Publicaciones & Bitácoras</span>
-      <h2 class="section-title">Pensamientos, Tutoriales & <span class="text-gold">Sistemas</span></h2>
-      <p class="section-desc">Artículos técnicos y reflexiones directas sobre flujos de trabajo reales con IA, ingeniería audiovisual y creación digital.</p>
-    </div>
-
-    <!-- Filter & Search -->
-    <div class="filter-bar">
-      <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por título, tecnología o etiqueta...">
-      </div>
-      <div class="category-pills">
-        <button class="pill-btn active" data-filter="all">Todos</button>
-        <button class="pill-btn" data-filter="ia">🤖 IA & MCP</button>
-        <button class="pill-btn" data-filter="video">🎬 Video & Audio</button>
-        <button class="pill-btn" data-filter="vibe">⚡ Vibe Coding</button>
-        <button class="pill-btn" data-filter="hardware">🛠️ Hardware & Lab</button>
-        <button class="pill-btn" data-filter="filosofia">🌱 Reflexiones</button>
-      </div>
-    </div>
-
-    <!-- Featured Post -->
-    <div class="featured-article" id="featuredArticle" data-category="ia" onclick="openArticleModal('art-1')">
-      <div class="featured-img-wrap">
-        <img src="img/ai_lab.jpg" alt="Agentes Autónomos MCP" class="featured-img" loading="lazy" decoding="async">
-        <span class="featured-badge"><i class="fa-solid fa-star"></i> Destacado</span>
-      </div>
-      <div class="featured-body">
-        <div class="article-meta">
-          <span><i class="fa-solid fa-calendar-day"></i> 18 de Agosto, 2026</span>
-          <span><i class="fa-solid fa-clock"></i> 12 min de lectura</span>
-          <span><i class="fa-solid fa-tag"></i> IA & MCP</span>
-        </div>
-        <h3 class="featured-title">Construyendo Agentes Autónomos con MCP: Del Concepto al Flujo de Trabajo Real</h3>
-        <p class="featured-excerpt">
-          Cómo implementamos servidores Model Context Protocol locales en Python y Node.js para conectar modelos de lenguaje directamente con DaVinci Resolve, auditorías web automatizadas y telemetría de sistemas.
-        </p>
-        <div>
-          <span class="btn btn-gold" style="padding: 0.45rem 1.1rem; font-size: 0.82rem;">
-            Leer artículo completo <i class="fa-solid fa-arrow-right"></i>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Article Cards Grid -->
-    <div class="articles-grid" id="articlesGrid">
-
-      <!-- Card 2 -->
-      <article class="article-card" data-category="video" onclick="openArticleModal('art-2')">
-        <div class="card-img-wrap">
-          <img src="img/podcast.jpg" alt="Pipeline Multicámara Podcast" class="card-img" loading="lazy" decoding="async">
-          <span class="card-category-tag">🎬 Video & Audio</span>
-        </div>
-        <div class="card-content">
-          <div class="article-meta">
-            <span><i class="fa-regular fa-clock"></i> 8 min</span>
-            <span><i class="fa-regular fa-calendar"></i> 16 Ago 2026</span>
-          </div>
-          <h3 class="card-title">El Pipeline Automatizado de Video: Flujos Multicámara y Proxies en 1080p</h3>
-          <p class="card-excerpt">
-            La arquitectura detrás de Hijos del Trago Podcast: organización automática de clips por cámara, generación sincronizada de líneas de tiempo y colas de renderizado nocturno.
-          </p>
-          <div class="card-footer">
-            <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
-            <span><i class="fa-solid fa-code"></i> Python + DVR</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3 -->
-      <article class="article-card" data-category="vibe" onclick="openArticleModal('art-3')">
-        <div class="card-img-wrap">
-          <img src="img/coding.jpg" alt="Vibe Coding 2026" class="card-img" loading="lazy" decoding="async">
-          <span class="card-category-tag">⚡ Vibe Coding</span>
-        </div>
-        <div class="card-content">
-          <div class="article-meta">
-            <span><i class="fa-regular fa-clock"></i> 10 min</span>
-            <span><i class="fa-regular fa-calendar"></i> 12 Ago 2026</span>
-          </div>
-          <h3 class="card-title">Vibe Coding en 2026: De Escribir Sintaxis a Orquestar Sistemas Inteligentes</h3>
-          <p class="card-excerpt">
-            Cómo cambió mi día a día como Ingeniero en Sistemas: metodologías para programar en simbiosis con LLMs, pruebas deterministas y diseño visual de alto impacto sin fricción.
-          </p>
-          <div class="card-footer">
-            <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
-            <span><i class="fa-solid fa-brain"></i> Arquitectura</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 4 -->
-      <article class="article-card" data-category="hardware" onclick="openArticleModal('art-4')">
-        <div class="card-img-wrap">
-          <img src="img/3d_print.jpg" alt="Impresión 3D y Corte Láser" class="card-img" loading="lazy" decoding="async">
-          <span class="card-category-tag">🛠️ Hardware & Lab</span>
-        </div>
-        <div class="card-content">
-          <div class="article-meta">
-            <span><i class="fa-regular fa-clock"></i> 7 min</span>
-            <span><i class="fa-regular fa-calendar"></i> 05 Ago 2026</span>
-          </div>
-          <h3 class="card-title">Ingeniería Creativa: Impresión 3D, Corte Láser y Drones como Extensión del Código</h3>
-          <p class="card-excerpt">
-            El software cobra vida cuando toca el mundo físico. Prototipado rápido de gabinetes, accesorios para rigs de cámara y piezas personalizadas en mi taller personal.
-          </p>
-          <div class="card-footer">
-            <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
-            <span><i class="fa-solid fa-gear"></i> Hardware Lab</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 5 -->
-      <article class="article-card" data-category="filosofia" onclick="openArticleModal('art-5')">
-        <div class="card-img-wrap">
-          <img src="img/strategy.jpg" alt="Autonomía Digital" class="card-img" loading="lazy" decoding="async">
-          <span class="card-category-tag">🌱 Reflexiones</span>
-        </div>
-        <div class="card-content">
-          <div class="article-meta">
-            <span><i class="fa-regular fa-clock"></i> 6 min</span>
-            <span><i class="fa-regular fa-calendar"></i> 28 Jul 2026</span>
-          </div>
-          <h3 class="card-title">Por qué la Soberanía Digital y un Espacio Web Propio Siguen Siendo Esenciales</h3>
-          <p class="card-excerpt">
-            En un internet dominado por algoritmos cerrados y plataformas prestadas, tener tu propio portal estático en GitHub Pages y herramientas auto-alojadas es un acto de independencia técnica.
-          </p>
-          <div class="card-footer">
-            <span class="read-more-btn">Leer publicación <i class="fa-solid fa-arrow-right"></i></span>
-            <span><i class="fa-solid fa-feather"></i> Ensayo</span>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- Bento Ecosystem Section -->
-  <section id="ecosistema" class="ecosystem-section container">
-    <div class="section-header">
-      <span class="section-tag">Ecosistema Vivo</span>
-      <h2 class="section-title">Proyectos, Portales & <span class="text-gold">Creaciones</span></h2>
-      <p class="section-desc">Acceso directo a las diferentes plataformas y aplicaciones que construyo y mantengo activas.</p>
-    </div>
-
-    <div class="bento-grid">
-      <!-- Bento 1: CV Interactivo -->
-      <a href="https://werkweek.github.io/curriculumgibranvilla/" target="_blank" class="bento-card bento-col-8 bento-gold">
-        <div>
-          <div class="bento-header">
-            <div class="bento-icon icon-gold">
-              <i class="fa-solid fa-award"></i>
-            </div>
-            <span class="bento-link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </div>
-          <h3 class="bento-title">Curículum Vitae Interactivo & PDF Harvard ATS</h3>
-          <p class="bento-desc">
-            Portal web con estética Obsidian Gold, selector dinámico de roles (AI Architect, Multimedia Lead, Creative Technologist) y compilador automático de CV en PDF multilingüe (Español, Inglés y Chino Mandarín) optimizado para sistemas ATS.
-          </p>
-        </div>
-        <div class="bento-tags">
-          <span class="bento-tag">HTML5 / Vanilla CSS</span>
-          <span class="bento-tag">Chrome Headless PDF</span>
-          <span class="bento-tag">Trilingüe (ES/EN/ZH)</span>
-          <span class="bento-tag">60fps Canvas</span>
-        </div>
-      </a>
-
-      <!-- Bento 2: Hijos del Trago Podcast -->
-      <div class="bento-card bento-col-4 bento-cobalt">
-        <div>
-          <div class="bento-header">
-            <div class="bento-icon icon-cobalt">
-              <i class="fa-solid fa-microphone-lines"></i>
-            </div>
-            <span class="bento-link-arrow"><i class="fa-solid fa-podcast"></i></span>
-          </div>
-          <h3 class="bento-title">Hijos del Trago Podcast</h3>
-          <p class="bento-desc">
-            Producción audiovisual completa: setup multicámara, masterización con iZotope/FabFilter y automatización de clips para YouTube.
-          </p>
-        </div>
-        <div class="bento-tags">
-          <span class="bento-tag">DaVinci Resolve API</span>
-          <span class="bento-tag">Audio DSP</span>
-        </div>
-      </div>
-
-      <!-- Bento 3: Antigravity Suite -->
-      <div class="bento-card bento-col-6 bento-cobalt">
-        <div>
-          <div class="bento-header">
-            <div class="bento-icon icon-emerald">
-              <i class="fa-solid fa-terminal"></i>
-            </div>
-            <span class="bento-link-arrow"><i class="fa-solid fa-code-branch"></i></span>
-          </div>
-          <h3 class="bento-title">Antigravity Suite v3.0 & MCP Ecosystem</h3>
-          <p class="bento-desc">
-            Entorno unificado de desarrollo con agentes de IA autónomos, sincronización multi-nube (Google Drive, OneDrive, Box) y widgets de telemetría de sistema en tiempo real.
-          </p>
-        </div>
-        <div class="bento-tags">
-          <span class="bento-tag">Model Context Protocol</span>
-          <span class="bento-tag">Python CLI</span>
-          <span class="bento-tag">Multi-Cloud Sync</span>
-        </div>
-      </div>
-
-      <!-- Bento 4: Invitación Digital -->
-      <a href="https://werkweek.github.io/invitacion-boda/" target="_blank" class="bento-card bento-col-6 bento-gold">
-        <div>
-          <div class="bento-header">
-            <div class="bento-icon icon-gold">
-              <i class="fa-solid fa-heart"></i>
-            </div>
-            <span class="bento-link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-          </div>
-          <h3 class="bento-title">Invitación de Boda Digital e Interactiva</h3>
-          <p class="bento-desc">
-            Experiencia web interactiva con estética refinada, cuenta regresiva en tiempo real, integración de ubicación GPS, confirmación RSVP y galería fotográfica.
-          </p>
-        </div>
-        <div class="bento-tags">
-          <span class="bento-tag">Interactive UI</span>
-          <span class="bento-tag">Countdown Timer</span>
-          <span class="bento-tag">GitHub Pages</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- About Me & Setup Section -->
-  <section id="sobre-mi" class="about-section container">
-    <div class="about-grid">
-      <div class="about-text">
-        <span class="section-tag">Detrás de la Pantalla</span>
-        <h2 class="section-title" style="margin-bottom: 1.25rem;">Ingeniería, Creatividad & <span class="text-gold">Autonomía</span></h2>
-        <p>
-          Soy <strong>Gibran Samuel Villa Franco</strong>, Ingeniero en Sistemas por la Universidad Autónoma de Chihuahua (UACH). A lo largo de más de una década me he especializado en crear soluciones que unen el código robusto con el diseño visual y la producción multimedia.
-        </p>
-        <p>
-          Creo firmemente en la <em>autonomía tecnológica</em>: construir herramientas propias, dominar la infraestructura local mediante MCP y servidores locales, y aprovechar la Inteligencia Artificial como un amplificador del pensamiento técnico y creativo.
-        </p>
-        <div style="margin-top: 1.5rem; display: flex; gap: 0.85rem; flex-wrap: wrap;">
           <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-outline">
-            <i class="fa-brands fa-linkedin"></i> LinkedIn
+            <i class="fa-brands fa-linkedin-in"></i> Conectar en LinkedIn
           </a>
-          <a href="https://github.com/werkweek" target="_blank" class="btn btn-outline">
-            <i class="fa-brands fa-github"></i> GitHub (@werkweek)
-          </a>
-          <button class="btn btn-gold" onclick="copyEmail()">
-            <i class="fa-solid fa-copy"></i> Copiar Email
-          </button>
         </div>
       </div>
+    </section>
 
-      <div class="tech-stack-wrap">
-        <h4><i class="fa-solid fa-layer-group"></i> Stack Técnico & Herramientas Diarias</h4>
-        <div class="tech-pills-cloud">
-          <span class="tech-pill"><i class="fa-brands fa-python"></i> Python 3.12+</span>
-          <span class="tech-pill"><i class="fa-brands fa-js"></i> JavaScript / Node.js</span>
-          <span class="tech-pill"><i class="fa-solid fa-robot"></i> Anthropic / OpenAI / Gemini APIs</span>
-          <span class="tech-pill"><i class="fa-solid fa-network-wired"></i> Model Context Protocol (MCP)</span>
-          <span class="tech-pill"><i class="fa-solid fa-film"></i> DaVinci Resolve Studio API</span>
-          <span class="tech-pill"><i class="fa-solid fa-sliders"></i> iZotope RX / FabFilter DSP</span>
-          <span class="tech-pill"><i class="fa-solid fa-cube"></i> Bambu Lab 3D Printing</span>
-          <span class="tech-pill"><i class="fa-solid fa-bolt"></i> CO2 & Diode Laser Systems</span>
-          <span class="tech-pill"><i class="fa-brands fa-git-alt"></i> Git & GitHub Actions</span>
-          <span class="tech-pill"><i class="fa-brands fa-linux"></i> Linux & PowerShell Core</span>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div>
+            <strong style="color: var(--text-main); font-size: 1.05rem;">Gibran Villa</strong> — Bitácora Personal & Tech Portal
+            <p style="margin-top: 4px; font-size: 0.8rem;">Chihuahua, Chih., México // Vibe Coding & Creative Engineering</p>
+          </div>
+          <div class="footer-status">
+            <span class="status-dot"></span>
+            <span>Desplegado en GitHub Pages CDN</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Gibran Samuel Villa Franco. Diseñado con arquitectura Obsidian Gold & Vanilla Web Standards.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Connect Section -->
-  <section id="contacto" class="connect-section container">
-    <div class="connect-card">
-      <h2 class="connect-title">¿Conversamos sobre <span class="text-gold">IA, Audio/Video</span> o Nuevos Proyectos?</h2>
-      <p class="connect-desc">
-        Siempre estoy abierto a colaborar en iniciativas innovadoras, desarrollo de agentes inteligentes o arquitecturas multimedia avanzadas.
-      </p>
-      <div class="connect-actions">
-        <a href="mailto:samf3212@gmail.com" class="btn btn-gold">
-          <i class="fa-solid fa-paper-plane"></i> Enviar Correo Directo
-        </a>
-        <button class="btn btn-outline" onclick="copyEmail()">
-          <i class="fa-solid fa-envelope"></i> samf3212@gmail.com
-        </button>
-        <a href="https://linkedin.com/in/gibran-villa" target="_blank" class="btn btn-outline">
-          <i class="fa-brands fa-linkedin-in"></i> Conectar en LinkedIn
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <strong style="color: var(--text-main); font-size: 1.05rem;">Gibran Villa</strong> — Bitácora Personal & Tech Portal
-          <p style="margin-top: 4px; font-size: 0.8rem;">Chihuahua, Chih., México // Vibe Coding & Creative Engineering</p>
-        </div>
-        <div class="footer-status">
-          <span class="status-dot"></span>
-          <span>Desplegado en GitHub Pages CDN</span>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Gibran Samuel Villa Franco. Diseñado con arquitectura Obsidian Gold & Vanilla Web Standards.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <!-- Reader Modal (Article Detail) -->
   <div class="modal-overlay" id="articleModal" onclick="handleModalBackdropClick(event)">
     <div class="modal-container">
       <div class="modal-header">
-        <div id="modalMeta" style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--gold-light);"></div>
+        <div id="modalMeta" style="font-family: monospace; font-size: 0.82rem; color: var(--gold-light);"></div>
         <button class="modal-close-btn" onclick="closeArticleModal()" title="Cerrar artículo">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1912,356 +1752,336 @@
     <span id="toastMessage">¡Email copiado al portapapeles!</span>
   </div>
 
-  <!-- Scripts -->
+  <!-- Scripts with robust try/catch for in-app WebView compatibility -->
   <script>
-    // Articles Database
-    const ARTICLES = {
-      'art-1': {
-        title: "Construyendo Agentes Autónomos con MCP: Del Concepto al Flujo de Trabajo Real",
-        category: "🤖 IA & MCP",
-        date: "18 de Agosto, 2026",
-        readTime: "12 min",
-        image: "img/ai_lab.jpg",
-        content: `
-          <img src="img/ai_lab.jpg" alt="AI Lab" class="modal-banner-img" loading="lazy">
-          <h2>El cambio de paradigma: De Chatbots aislados a Agentes con Manos</h2>
-          <p>Durante años, la interacción con Inteligencia Artificial estuvo limitada a cajas de texto en navegadores. Le pedías a un modelo que redactara un script, lo copiabas, lo pegabas en tu editor, corregías errores de ruta y lo ejecutabas a mano.</p>
-          <p>La adopción del <strong>Model Context Protocol (MCP)</strong> rompe completamente este cuello de botella. Al convertir nuestras herramientas locales en servidores MCP con interfaces estandarizadas (stdio/SSE), el modelo de lenguaje pasa de ser un mero redactor a convertirse en un <strong>operador autónomo de software</strong>.</p>
-
-          <blockquote>
-            "Un agente de IA no es potente por los tokens que genera, sino por las herramientas que puede invocar con precisión determinista."
-          </blockquote>
-
-          <h3>Arquitectura de nuestros Servidores MCP Locales</h3>
-          <p>En mi flujo diario construimos servidores específicos para cada tarea crítica:</p>
-          <ul>
-            <li><strong>DaVinci Resolve MCP:</strong> Inspección de líneas de tiempo, creación de bins por cámara, transcripción automática y lanzamiento de renders proxy a 1080p.</li>
-            <li><strong>Web Architect MCP:</strong> Auditoría visual de archivos HTML, validación de Doctype, metadatos SEO, canvas 60fps y compilación de PDF ATS con Chrome Headless.</li>
-            <li><strong>Multi-Cloud Backup MCP:</strong> Sincronización transparente de proyectos hacia Google Drive, OneDrive y Box Cloud.</li>
-          </ul>
-
-          <pre><code># Ejemplo conceptual de llamada MCP en Python
+    try {
+      const ARTICLES = {
+        'art-1': {
+          title: "Construyendo Agentes Autónomos con MCP: Del Concepto al Flujo de Trabajo Real",
+          category: "🤖 IA & MCP",
+          date: "18 de Agosto, 2026",
+          readTime: "12 min",
+          image: "img/ai_lab.jpg",
+          content: `
+            <img src="img/ai_lab.jpg" alt="AI Lab" class="modal-banner-img" loading="lazy">
+            <h2>El cambio de paradigma: De Chatbots aislados a Agentes con Manos</h2>
+            <p>Durante años, la interacción con Inteligencia Artificial estuvo limitada a cajas de texto en navegadores. Le pedías a un modelo que redactara un script, lo copiabas, lo pegabas en tu editor, corregías errores de ruta y lo ejecutabas a mano.</p>
+            <p>La adopción del <strong>Model Context Protocol (MCP)</strong> rompe completamente este cuello de botella. Al convertir nuestras herramientas locales en servidores MCP con interfaces estandarizadas (stdio/SSE), el modelo de lenguaje pasa de ser un mero redactor a convertirse en un <strong>operador autónomo de software</strong>.</p>
+            <blockquote>"Un agente de IA no es potente por los tokens que genera, sino por las herramientas que puede invocar con precisión determinista."</blockquote>
+            <h3>Arquitectura de nuestros Servidores MCP Locales</h3>
+            <p>En mi flujo diario construimos servidores específicos para cada tarea crítica:</p>
+            <ul>
+              <li><strong>DaVinci Resolve MCP:</strong> Inspección de líneas de tiempo, creación de bins por cámara, transcripción automática y lanzamiento de renders proxy a 1080p.</li>
+              <li><strong>Web Architect MCP:</strong> Auditoría visual de archivos HTML, validación de Doctype, metadatos SEO, canvas 60fps y compilación de PDF ATS con Chrome Headless.</li>
+              <li><strong>Multi-Cloud Backup MCP:</strong> Sincronización transparente de proyectos hacia Google Drive, OneDrive y Box Cloud.</li>
+            </ul>
+            <pre><code># Ejemplo conceptual de llamada MCP en Python
 @mcp.tool()
 def render_timeline_proxies(project_name: str, timeline_id: str) -> dict:
     resolve = GetResolve()
     pm = resolve.GetProjectManager()
     project = pm.LoadProject(project_name)
     timeline = project.GetTimelineByIndex(int(timeline_id))
-    # Configurar preset YouTube 1080p y renderizar
     return {"status": "success", "jobs_queued": 1}</code></pre>
-
-          <h3>Conclusión y Próximos Pasos</h3>
-          <p>Integrar agentes directamente en tu entorno local no solo ahorra horas de tareas repetitivas: cambia tu rol como ingeniero, permitiéndote enfocarte en la arquitectura y la visión general mientras el agente ejecuta las operaciones de bajo nivel con exactitud.</p>
-        `
-      },
-      'art-2': {
-        title: "El Pipeline Automatizado de Video: Flujos Multicámara y Proxies en 1080p",
-        category: "🎬 Video & Audio",
-        date: "16 de Agosto, 2026",
-        readTime: "8 min",
-        image: "img/podcast.jpg",
-        content: `
-          <img src="img/podcast.jpg" alt="Podcast Studio" class="modal-banner-img" loading="lazy">
-          <h2>El reto de producir podcasts multicámara semanales</h2>
-          <p>Producir un episodio de <em>Hijos del Trago</em> con múltiples cámaras 4K, pistas de audio dedicadas y formatos verticales para redes sociales solía requerir horas de clasificación de tarjetas SD, sincronización de audio por forma de onda y exportación manual.</p>
-
-          <h3>La Solución: Automatización con DaVinci Resolve Python API</h3>
-          <p>Desarrollamos una suite de scripts automatizados que resuelven todo el pipeline en 3 fases:</p>
-          <ol>
-            <li><strong>Ingesta y Clasificación:</strong> Reconocimiento de metadatos de cámara (A-Cam, B-Cam, Guest) y creación estructurada de Media Bins.</li>
-            <li><strong>Sincronización Multicam:</strong> Sincronización automática de clips basada en el código de tiempo y las pistas de audio masterizadas.</li>
-            <li><strong>Renderizado de Proxies YouTube 1080p:</strong> Creación de una línea de tiempo proxy optimizada y envío a la cola de renderizado en segundo plano para edición fluida.</li>
-          </ol>
-
-          <blockquote>
-            "La creatividad en video florece cuando el proceso técnico de importación, sincronización y renderizado está 100% resuelto por software."
-          </blockquote>
-        `
-      },
-      'art-3': {
-        title: "Vibe Coding en 2026: De Escribir Sintaxis a Orquestar Sistemas Inteligentes",
-        category: "⚡ Vibe Coding",
-        date: "12 de Agosto, 2026",
-        readTime: "10 min",
-        image: "img/coding.jpg",
-        content: `
-          <img src="img/coding.jpg" alt="Vibe Coding" class="modal-banner-img" loading="lazy">
-          <h2>¿Qué es realmente el Vibe Coding?</h2>
-          <p>El término <em>Vibe Coding</em> no significa programar sin rigor. Al contrario: representa el estado de flujo donde el desarrollador define objetivos arquitectónicos, estándares de diseño y restricciones de calidad en lenguaje natural de alta densidad, mientras los modelos de lenguaje escriben y refactorizan código a la velocidad del pensamiento.</p>
-
-          <h3>Los 3 Pilares del Vibe Coding Efectivo:</h3>
-          <ul>
-            <li><strong>Contexto Local Preciso (KIs & Skills):</strong> Proporcionar al modelo bitácoras, arquitecturas probadas y directrices visuales antes de generar la primera línea.</li>
-            <li><strong>Verificación Determinista:</strong> Todo cambio debe ser auditado de inmediato mediante herramientas locales (linters, compiladores headless, pruebas unitarias).</li>
-            <li><strong>Estética Premium por Defecto:</strong> Rechazar interfaces genéricas y exigir paletas de colores exclusivas (Obsidian & Gold), animaciones a 60fps y micro-interacciones que eleven la experiencia de usuario.</li>
-          </ul>
-        `
-      },
-      'art-4': {
-        title: "Ingeniería Creativa: Impresión 3D, Corte Láser y Drones como Extensión del Código",
-        category: "🛠️ Hardware & Lab",
-        date: "05 de Agosto, 2026",
-        readTime: "7 min",
-        image: "img/3d_print.jpg",
-        content: `
-          <img src="img/3d_print.jpg" alt="Hardware Lab" class="modal-banner-img" loading="lazy">
-          <h2>El puente entre el mundo digital y la materia física</h2>
-          <p>Muchos desarrolladores pasan toda su carrera dentro del software puro. Sin embargo, cuando combinas programación con fabricación digital (fabricación aditiva, corte láser CO2 y robótica aérea), las posibilidades se multiplican exponencialmente.</p>
-
-          <h3>Proyectos en el Taller:</h3>
-          <ul>
-            <li><strong>Rigs y Monturas Personalizadas:</strong> Soportes impresos en 3D con filamento PETG y fibra de carbono para micrófonos, interfaces de audio y cámaras de estudio.</li>
-            <li><strong>Grabado y Corte Láser:</strong> Paneles frontales acrílicos retroiluminados para controladores MIDI y cajas de telemetría de servidor.</li>
-            <li><strong>Tomas Aéreas con Drones:</strong> Integración de metadatos GPS y trayectorias automatizadas para producción audiovisual en exteriores.</li>
-          </ul>
-        `
-      },
-      'art-5': {
-        title: "Por qué la Soberanía Digital y un Espacio Web Propio Siguen Siendo Esenciales",
-        category: "🌱 Reflexiones",
-        date: "28 de Julio, 2026",
-        readTime: "6 min",
-        image: "img/strategy.jpg",
-        content: `
-          <img src="img/strategy.jpg" alt="Estrategia Digital" class="modal-banner-img" loading="lazy">
-          <h2>Tu propio rincón en la web</h2>
-          <p>Las redes sociales y plataformas cerradas van y vienen. Cambian sus algoritmos, monetizan tu atención y pueden suspender tu presencia de un día para otro. Por eso, poseer tu propio dominio y alojar tus proyectos en <strong>GitHub Pages</strong> o servidores propios es una de las decisiones más estratégicas que puede tomar cualquier profesional de la tecnología.</p>
-
-          <blockquote>
-            "Un sitio estático rápido, ligero, sin rastreadores invasivos y con código limpio que te pertenezca al 100% vale más que mil perfiles en redes corporativas."
-          </blockquote>
-          <p>Este blog y mi portal de curículum son un testimonio de esa filosofía: código abierto, diseño artesanal y total independencia técnica.</p>
-        `
-      }
-    };
-
-    // Mobile Drawer Logic
-    function toggleMobileDrawer() {
-      const drawer = document.getElementById('mobileDrawer');
-      const icon = document.getElementById('mobileMenuIcon');
-      drawer.classList.toggle('open');
-      if (drawer.classList.contains('open')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-xmark');
-      } else {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-      }
-    }
-
-    function closeMobileDrawer() {
-      const drawer = document.getElementById('mobileDrawer');
-      const icon = document.getElementById('mobileMenuIcon');
-      drawer.classList.remove('open');
-      if (icon) {
-        icon.classList.remove('fa-xmark');
-        icon.classList.add('fa-bars');
-      }
-    }
-
-    // Open Article Modal
-    function openArticleModal(artId) {
-      const art = ARTICLES[artId];
-      if (!art) return;
-      document.getElementById('modalMeta').innerHTML = `
-        <span><i class="fa-solid fa-tag"></i> ${art.category}</span> &nbsp;|&nbsp;
-        <span><i class="fa-solid fa-calendar"></i> ${art.date}</span> &nbsp;|&nbsp;
-        <span><i class="fa-solid fa-clock"></i> ${art.readTime}</span>
-      `;
-      document.getElementById('modalBody').innerHTML = `
-        <h1>${art.title}</h1>
-        ${art.content}
-      `;
-      const modal = document.getElementById('articleModal');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    // Close Article Modal
-    function closeArticleModal() {
-      const modal = document.getElementById('articleModal');
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    function handleModalBackdropClick(e) {
-      if (e.target.id === 'articleModal') {
-        closeArticleModal();
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeArticleModal();
-    });
-
-    // Search and Filter Logic
-    const searchInput = document.getElementById('searchInput');
-    const pillBtns = document.querySelectorAll('.pill-btn');
-    const articleCards = document.querySelectorAll('.article-card');
-    const featuredArticle = document.getElementById('featuredArticle');
-
-    let currentFilter = 'all';
-
-    function filterPosts() {
-      const query = (searchInput ? searchInput.value.toLowerCase().trim() : '');
-
-      // Filter Featured
-      if (featuredArticle) {
-        const featCat = featuredArticle.getAttribute('data-category');
-        const featText = featuredArticle.innerText.toLowerCase();
-        const featMatchesFilter = (currentFilter === 'all' || featCat === currentFilter);
-        const featMatchesSearch = featText.includes(query);
-        featuredArticle.style.display = (featMatchesFilter && featMatchesSearch) ? 'grid' : 'none';
-      }
-
-      // Filter Cards
-      articleCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const text = card.innerText.toLowerCase();
-        const matchesFilter = (currentFilter === 'all' || cat === currentFilter);
-        const matchesSearch = text.includes(query);
-        card.style.display = (matchesFilter && matchesSearch) ? 'flex' : 'none';
-      });
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener('input', filterPosts);
-    }
-
-    pillBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        pillBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.getAttribute('data-filter');
-        filterPosts();
-      });
-    });
-
-    // Copy Email Toast
-    function copyEmail() {
-      const email = 'samf3212@gmail.com';
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(() => {
-          showToast('¡Email copiado al portapapeles: ' + email + '!');
-        }).catch(() => {
-          showToast('Email: ' + email);
-        });
-      } else {
-        showToast('Email: ' + email);
-      }
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toastMessage');
-      if (toast && toastMsg) {
-        toastMsg.innerText = msg;
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 3500);
-      }
-    }
-
-    // Battery-efficient 60fps Canvas (Obsidian & Gold Neural Mesh)
-    (function initBackgroundCanvas() {
-      const canvas = document.getElementById('bg-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      let mouse = { x: null, y: null, maxDist: 160 };
-
-      const isMobile = (window.innerWidth < 768) || ('ontouchstart' in window);
-
-      function resize() {
-        if (width === window.innerWidth && Math.abs(height - window.innerHeight) < 80) {
-          // Ignore vertical address-bar resize on mobile
-          return;
+            <h3>Conclusión y Próximos Pasos</h3>
+            <p>Integrar agentes directamente en tu entorno local te permite enfocarte en la arquitectura mientras el agente ejecuta las operaciones de bajo nivel con exactitud.</p>
+          `
+        },
+        'art-2': {
+          title: "El Pipeline Automatizado de Video: Flujos Multicámara y Proxies en 1080p",
+          category: "🎬 Video & Audio",
+          date: "16 de Agosto, 2026",
+          readTime: "8 min",
+          image: "img/podcast.jpg",
+          content: `
+            <img src="img/podcast.jpg" alt="Podcast Studio" class="modal-banner-img" loading="lazy">
+            <h2>El reto de producir podcasts multicámara semanales</h2>
+            <p>Producir un episodio de <em>Hijos del Trago</em> con múltiples cámaras 4K, pistas de audio dedicadas y formatos verticales para redes sociales solía requerir horas de clasificación y sincronización manual.</p>
+            <h3>La Solución: Automatización con DaVinci Resolve Python API</h3>
+            <ol>
+              <li><strong>Ingesta y Clasificación:</strong> Reconocimiento de metadatos de cámara y creación de Media Bins.</li>
+              <li><strong>Sincronización Multicam:</strong> Sincronización automática de clips basada en código de tiempo y audio.</li>
+              <li><strong>Renderizado de Proxies YouTube 1080p:</strong> Línea de tiempo optimizada en segundo plano para edición fluida.</li>
+            </ol>
+            <blockquote>"La creatividad en video florece cuando el proceso técnico de importación, sincronización y renderizado está 100% resuelto por software."</blockquote>
+          `
+        },
+        'art-3': {
+          title: "Vibe Coding en 2026: De Escribir Sintaxis a Orquestar Sistemas Inteligentes",
+          category: "⚡ Vibe Coding",
+          date: "12 de Agosto, 2026",
+          readTime: "10 min",
+          image: "img/coding.jpg",
+          content: `
+            <img src="img/coding.jpg" alt="Vibe Coding" class="modal-banner-img" loading="lazy">
+            <h2>¿Qué es realmente el Vibe Coding?</h2>
+            <p>El término <em>Vibe Coding</em> representa el estado de flujo donde el desarrollador define objetivos arquitectónicos y restricciones de calidad en lenguaje natural de alta densidad, mientras los modelos escriben y refactorizan código a la velocidad del pensamiento.</p>
+            <h3>Los 3 Pilares del Vibe Coding Efectivo:</h3>
+            <ul>
+              <li><strong>Contexto Local Preciso (KIs & Skills):</strong> Bitácoras, arquitecturas y directrices visuales antes de generar la primera línea.</li>
+              <li><strong>Verificación Determinista:</strong> Auditorías inmediatas con linters y compiladores locales.</li>
+              <li><strong>Estética Premium por Defecto:</strong> Paletas de colores exclusivas (Obsidian & Gold), animaciones a 60fps y micro-interacciones.</li>
+            </ul>
+          `
+        },
+        'art-4': {
+          title: "Ingeniería Creativa: Impresión 3D, Corte Láser y Drones como Extensión del Código",
+          category: "🛠️ Hardware & Lab",
+          date: "05 de Agosto, 2026",
+          readTime: "7 min",
+          image: "img/3d_print.jpg",
+          content: `
+            <img src="img/3d_print.jpg" alt="Hardware Lab" class="modal-banner-img" loading="lazy">
+            <h2>El puente entre el mundo digital y la materia física</h2>
+            <p>Combinar software con fabricación digital (fabricación aditiva, corte láser CO2 y robótica aérea) multiplica las posibilidades creativas y técnicas.</p>
+            <h3>Proyectos en el Taller:</h3>
+            <ul>
+              <li><strong>Rigs y Monturas:</strong> Soportes impresos en 3D con filamento PETG y fibra de carbono.</li>
+              <li><strong>Grabado y Corte Láser:</strong> Paneles frontales acrílicos para controladores MIDI y cajas de telemetría.</li>
+              <li><strong>Tomas Aéreas con Drones:</strong> Integración de metadatos GPS y trayectorias automatizadas.</li>
+            </ul>
+          `
+        },
+        'art-5': {
+          title: "Por qué la Soberanía Digital y un Espacio Web Propio Siguen Siendo Esenciales",
+          category: "🌱 Reflexiones",
+          date: "28 de Julio, 2026",
+          readTime: "6 min",
+          image: "img/strategy.jpg",
+          content: `
+            <img src="img/strategy.jpg" alt="Estrategia Digital" class="modal-banner-img" loading="lazy">
+            <h2>Tu propio rincón en la web</h2>
+            <p>Poseer tu propio dominio y alojar tus proyectos en <strong>GitHub Pages</strong> o servidores propios es una de las decisiones más estratégicas para cualquier profesional.</p>
+            <blockquote>"Un sitio estático rápido, ligero, sin rastreadores invasivos y con código limpio que te pertenezca al 100% vale más que mil perfiles en redes corporativas."</blockquote>
+          `
         }
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+      };
+
+      function toggleMobileDrawer() {
+        const drawer = document.getElementById('mobileDrawer');
+        const icon = document.getElementById('mobileMenuIcon');
+        if (!drawer) return;
+        drawer.classList.toggle('open');
+        if (icon) {
+          if (drawer.classList.contains('open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+          } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+          }
+        }
       }
-      window.addEventListener('resize', resize, { passive: true });
-      resize();
 
-      if (!isMobile) {
-        window.addEventListener('mousemove', (e) => {
-          mouse.x = e.clientX;
-          mouse.y = e.clientY;
-        }, { passive: true });
-
-        window.addEventListener('mouseleave', () => {
-          mouse.x = null;
-          mouse.y = null;
-        }, { passive: true });
+      function closeMobileDrawer() {
+        const drawer = document.getElementById('mobileDrawer');
+        const icon = document.getElementById('mobileMenuIcon');
+        if (drawer) drawer.classList.remove('open');
+        if (icon) {
+          icon.classList.remove('fa-xmark');
+          icon.classList.add('fa-bars');
+        }
       }
 
-      const count = isMobile ? 18 : Math.min(Math.floor((window.innerWidth * window.innerHeight) / 12000), 70);
-      const particles = [];
-      const colors = ['#f5e7b2', '#d4af37', '#38bdf8', '#ffffff'];
+      function openArticleModal(artId) {
+        const art = ARTICLES[artId];
+        if (!art) return;
+        const metaEl = document.getElementById('modalMeta');
+        const bodyEl = document.getElementById('modalBody');
+        const modal = document.getElementById('articleModal');
+        if (metaEl) {
+          metaEl.innerHTML = '<span>' + art.category + '</span> &nbsp;|&nbsp; <span>' + art.date + '</span> &nbsp;|&nbsp; <span>' + art.readTime + '</span>';
+        }
+        if (bodyEl) {
+          bodyEl.innerHTML = '<h1>' + art.title + '</h1>' + art.content;
+        }
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
 
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * (isMobile ? 0.25 : 0.4),
-          vy: (Math.random() - 0.5) * (isMobile ? 0.25 : 0.4),
-          radius: Math.random() * (isMobile ? 1.2 : 1.6) + 0.6,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          baseAlpha: Math.random() * 0.35 + 0.15
+      function closeArticleModal() {
+        const modal = document.getElementById('articleModal');
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      function handleModalBackdropClick(e) {
+        if (e.target && e.target.id === 'articleModal') {
+          closeArticleModal();
+        }
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeArticleModal();
+      });
+
+      const searchInput = document.getElementById('searchInput');
+      const pillBtns = document.querySelectorAll('.pill-btn');
+      const articleCards = document.querySelectorAll('.article-card');
+      const featuredArticle = document.getElementById('featuredArticle');
+
+      let currentFilter = 'all';
+
+      function filterPosts() {
+        const query = (searchInput ? searchInput.value.toLowerCase().trim() : '');
+
+        if (featuredArticle) {
+          const featCat = featuredArticle.getAttribute('data-category');
+          const featText = featuredArticle.innerText.toLowerCase();
+          const featMatchesFilter = (currentFilter === 'all' || featCat === currentFilter);
+          const featMatchesSearch = featText.includes(query);
+          featuredArticle.style.display = (featMatchesFilter && featMatchesSearch) ? 'grid' : 'none';
+        }
+
+        articleCards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          const text = card.innerText.toLowerCase();
+          const matchesFilter = (currentFilter === 'all' || cat === currentFilter);
+          const matchesSearch = text.includes(query);
+          card.style.display = (matchesFilter && matchesSearch) ? 'flex' : 'none';
         });
       }
 
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
+      if (searchInput) {
+        searchInput.addEventListener('input', filterPosts);
+      }
 
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
+      pillBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          pillBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-filter') || 'all';
+          filterPosts();
+        });
+      });
 
-          if (p.x < -10) p.x = width + 10;
-          if (p.x > width + 10) p.x = -10;
-          if (p.y < -10) p.y = height + 10;
-          if (p.y > height + 10) p.y = -10;
+      function copyEmail() {
+        const email = 'samf3212@gmail.com';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(() => {
+            showToast('¡Email copiado al portapapeles: ' + email + '!');
+          }).catch(() => {
+            showToast('Email: ' + email);
+          });
+        } else {
+          showToast('Email: ' + email);
+        }
+      }
 
-          // Mouse attraction on desktop
-          if (!isMobile && mouse.x !== null && mouse.y !== null) {
-            const dx = mouse.x - p.x;
-            const dy = mouse.y - p.y;
-            const dist = Math.hypot(dx, dy);
-            if (dist < mouse.maxDist) {
-              p.x += (dx / dist) * 0.5;
-              p.y += (dy / dist) * 0.5;
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMessage');
+        if (toast && toastMsg) {
+          toastMsg.innerText = msg;
+          toast.classList.add('show');
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3500);
+        }
+      }
+
+      // High-performance, fallback-safe Canvas
+      (function initBackgroundCanvas() {
+        const canvas = document.getElementById('bg-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        let width, height;
+        let mouse = { x: null, y: null, maxDist: 150 };
+
+        const isMobile = (window.innerWidth < 768) || ('ontouchstart' in window);
+
+        function resize() {
+          if (width === window.innerWidth && Math.abs(height - window.innerHeight) < 80) return;
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize, { passive: true });
+        resize();
+
+        if (!isMobile) {
+          window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+          }, { passive: true });
+
+          window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+          }, { passive: true });
+        }
+
+        const count = isMobile ? 16 : Math.min(Math.floor((window.innerWidth * window.innerHeight) / 12000), 65);
+        const particles = [];
+        const colors = ['#f5e7b2', '#d4af37', '#38bdf8', '#ffffff'];
+
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * (isMobile ? 0.25 : 0.35),
+            vy: (Math.random() - 0.5) * (isMobile ? 0.25 : 0.35),
+            radius: Math.random() * (isMobile ? 1.2 : 1.5) + 0.6,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            baseAlpha: Math.random() * 0.35 + 0.15
+          });
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < -10) p.x = width + 10;
+            if (p.x > width + 10) p.x = -10;
+            if (p.y < -10) p.y = height + 10;
+            if (p.y > height + 10) p.y = -10;
+
+            if (!isMobile && mouse.x !== null && mouse.y !== null) {
+              const dx = mouse.x - p.x;
+              const dy = mouse.y - p.y;
+              const dist = Math.hypot(dx, dy);
+              if (dist < mouse.maxDist) {
+                p.x += (dx / dist) * 0.4;
+                p.y += (dy / dist) * 0.4;
+              }
             }
-          }
 
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.globalAlpha = p.baseAlpha;
-          ctx.fill();
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.baseAlpha;
+            ctx.fill();
 
-          // Particle connecting lines
-          if (!isMobile) {
-            for (let j = i + 1; j < particles.length; j++) {
-              const p2 = particles[j];
-              const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-              if (dist < 110) {
-                ctx.beginPath();
-                ctx.strokeStyle = `rgba(212, 175, 55, ${0.18 * (1 - dist / 110)})`;
-                ctx.lineWidth = 0.5;
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
+            if (!isMobile) {
+              for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                if (dist < 100) {
+                  ctx.beginPath();
+                  ctx.strokeStyle = 'rgba(212, 175, 55, ' + (0.16 * (1 - dist / 100)) + ')';
+                  ctx.lineWidth = 0.5;
+                  ctx.moveTo(p.x, p.y);
+                  ctx.lineTo(p2.x, p2.y);
+                  ctx.stroke();
+                }
               }
             }
           }
+          requestAnimationFrame(animate);
         }
-        requestAnimationFrame(animate);
-      }
-      animate();
-    })();
+        animate();
+      })();
+    } catch (e) {
+      console.warn("Script init notice:", e);
+    }
   </script>
 </body>
 </html>
